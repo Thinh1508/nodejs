@@ -30,3 +30,32 @@ a {
   background-color: #04aa6d;
   color: white;
 }
+
+.create-user-container {
+  font-size: 15px;
+}
+
+.create-user-container div {
+  margin-bottom: 5px;
+}
+
+.create-user-container label {
+  display: block;
+}
+
+.create-user-container button {
+  margin: 5px 0;
+  background-color: green;
+  color: #ffffff;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-user {
+  display: inline;
+}
+
+.delete-user form {
+  display: inline;
+}
