@@ -29,8 +29,6 @@ let uploadFile = async (req, res) => {
   })
 }
 
-const uploadMultiple = multer().array("uploadFileM")
-
 let uploadFileMultiple = async (req, res) => {
   if (req.fileValidationError) {
     return res.send(req.fileValidationError)
@@ -42,7 +40,6 @@ let uploadFileMultiple = async (req, res) => {
   const files = req.files
   let index, len
 
-  // Loop through all the uploaded images and display them on frontend
   for (index = 0, len = files.length; index < len; ++index) {
     console.log()
     result += `<img src="/image/${files[index].filename}" width="300" style="margin-right: 20px;">`

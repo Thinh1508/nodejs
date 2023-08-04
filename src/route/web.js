@@ -42,6 +42,10 @@ const imageFilter = function (req, file, cb) {
 }
 
 const upload = multer({ storage: storage, fileFilter: imageFilter })
+const uploadMultiple = multer({
+  storage: storage,
+  fileFilter: imageFilter,
+}).array("uploadFileM", 5)
 
 const initWebRoute = (app) => {
   // home
@@ -62,7 +66,20 @@ const initWebRoute = (app) => {
   router.post("/uploadFile", upload.single("uploadFile"), uploadFile)
   router.post(
     "/uploadFile-multiple",
-    upload.array("uploadFileM", 10),
+    (req, res, next) => {
+      uploadMultiple(req, res, function (err) {
+        if (
+          err instanceof multer.MulterError &&
+          err.code === "LIMIT_UNEXPECTED_FILE"
+        ) {
+          return res.send("LIMIT_UNEXPECTED_FILE")
+        } else if (err) {
+          return res.send(err)
+        } else {
+          next()
+        }
+      })
+    },
     uploadFileMultiple
   )
 
