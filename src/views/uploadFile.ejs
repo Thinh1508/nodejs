@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodejs</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <style>
+      img {
+        height: 150px;
+        width: 150px;
+        border-radius: 6px;
+        border: 1px dashed black;
+        object-fit: cover;
+        padding: 5px;
+        margin-bottom: 20px;
+      }
+      input {
+        margin-bottom: 20px;
+      }
+
+      hr {
+        border: 1px solid black;
+        margin: 0 20px;
+      }
+    </style>
+  </head>
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/new">New Account</a>
+      <a class="active" href="/uploadFile">Upload File</a>
+    </div>
+
+    <div style="padding-left: 16px">
+      <h2>Upload Single File</h2>
+      <img src="/image/image.png" alt="" />
+      <form method="POST" action="/uploadFile" enctype="multipart/form-data">
+        <input type="file" name="uploadFile" />
+        <!-- <input type="file" name="uploadFile" multiple/> -->
+        <div>
+          <button type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+    <hr>
+    <div style="padding-left: 16px">
+      <h2>Upload Multiple File</h2>
+      <form method="POST" action="/uploadFile-Multiple" enctype="multipart/form-data">
+        <!-- <input type="file" name="uploadFile" /> -->
+        <input type="file" name="uploadFileM" multiple/>
+        <div>
+          <button type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const image = document.querySelector("img"),
+        input = document.querySelector("input")
+
+      input.addEventListener("change", () => {
+        image.src = URL.createObjectURL(input.files[0])
+        console.log(image.src)
+      })
+    </script>
+  </body>
+</html>

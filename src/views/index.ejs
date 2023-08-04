@@ -8,10 +8,9 @@
   </head>
   <body>
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="new">New Account</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+      <a class="active" href="/">Home</a>
+      <a href="/new">New Account</a>
+      <a href="/uploadFile">Upload File</a>
     </div>
 
     <div style="padding-left: 16px">
@@ -34,7 +33,7 @@
               <td><%= dataUser[i].lastName %></td>
               <td>
                 <button
-                  onclick="document.getElementById('id01').style.display='block'"
+                  onclick="document.getElementById('<%= dataUser[i].id %>').style.display='block'"
                 >
                   Detail
                 </button>
@@ -56,11 +55,11 @@
                   </form>
                 </div>
               </td>
-              <div id="id01" class="w3-modal">
+              <div id="<%= dataUser[i].id %>" class="w3-modal">
                 <div class="w3-modal-content">
                   <div class="w3-container">
                     <span
-                      onclick="document.getElementById('id01').style.display='none'"
+                      onclick="document.getElementById('<%= dataUser[i].id %>').style.display='none'"
                       class="w3-button w3-display-topright"
                       >&times;</span
                     >
